@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.start.coc.service.dao.ClanWarMapper" >
+  <resultMap id="BaseResultMap" type="com.start.coc.service.model.ClanWar" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="clan_id" property="clanId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gain_star" property="gainStar" jdbcType="INTEGER" />
+    <result column="loss_star" property="lossStar" jdbcType="INTEGER" />
+    <result column="join_amount" property="joinAmount" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, clan_id, name, gain_star, loss_star, join_amount, created, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from clan_war
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from clan_war
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.start.coc.service.model.ClanWar" >
+    insert into clan_war (id, clan_id, name, 
+      gain_star, loss_star, join_amount, 
+      created, remark)
+    values (#{id,jdbcType=BIGINT}, #{clanId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{gainStar,jdbcType=INTEGER}, #{lossStar,jdbcType=INTEGER}, #{joinAmount,jdbcType=INTEGER}, 
+      #{created,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.start.coc.service.model.ClanWar" >
+    insert into clan_war
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="clanId != null" >
+        clan_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="gainStar != null" >
+        gain_star,
+      </if>
+      <if test="lossStar != null" >
+        loss_star,
+      </if>
+      <if test="joinAmount != null" >
+        join_amount,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="clanId != null" >
+        #{clanId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gainStar != null" >
+        #{gainStar,jdbcType=INTEGER},
+      </if>
+      <if test="lossStar != null" >
+        #{lossStar,jdbcType=INTEGER},
+      </if>
+      <if test="joinAmount != null" >
+        #{joinAmount,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.start.coc.service.model.ClanWar" >
+    update clan_war
+    <set >
+      <if test="clanId != null" >
+        clan_id = #{clanId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gainStar != null" >
+        gain_star = #{gainStar,jdbcType=INTEGER},
+      </if>
+      <if test="lossStar != null" >
+        loss_star = #{lossStar,jdbcType=INTEGER},
+      </if>
+      <if test="joinAmount != null" >
+        join_amount = #{joinAmount,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.start.coc.service.model.ClanWar" >
+    update clan_war
+    set clan_id = #{clanId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      gain_star = #{gainStar,jdbcType=INTEGER},
+      loss_star = #{lossStar,jdbcType=INTEGER},
+      join_amount = #{joinAmount,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <sql id="inc_where">
+		<where>
+			<if test="eq_id!=null">
+				and t1.id = #{eq_id}
+			</if>	
+			<if test="eq_clan_id!=null">
+				and t1.clan_id = #{eq_clanId}
+			</if>						
+			<if test="eq_name != null">
+				and t1.name = #{eq_name,jdbcType=VARCHAR}
+			</if>
+			<if test="eq_created != null">
+				and t1.created = #{eq_created,jdbcType=TIMESTAMP}
+			</if>
+			<if test="eq_remark != null">
+				and t1.remark = #{eq_remark,jdbcType=VARCHAR}
+			</if>
+			<if test="like_id!=null">
+				and t1.id like #{like_id}
+			</if>
+			<if test="like_clan_id!=null">
+				and t1.clan_id like #{like_clanId}
+			</if>
+			<if test="like_name != null">
+				and t1.name like #{like_name,jdbcType=VARCHAR}
+			</if>
+			<if test="like_created != null">
+				and t1.created like #{like_created,jdbcType=TIMESTAMP}
+			</if>
+			<if test="like_remark != null">
+				and t1.remark like #{like_remark,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</sql>
+  
+  <select id="getByFind" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from clan_war t1
+		<include refid="inc_where" />
+	</select>
+</mapper>
