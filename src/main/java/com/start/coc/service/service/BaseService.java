@@ -1,9 +1,9 @@
 package com.start.coc.service.service;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.start.coc.service.dao.BaseDao;
@@ -28,18 +28,18 @@ public class BaseService<T, PK extends Serializable> implements BaseDao<T, PK>{
 	}	
 	
 	@Override
-	public PK deleteByPrimaryKey(PK id){
-		return baseDao.deleteByPrimaryKey(id);
+	public void deleteByPrimaryKey(PK id){
+		baseDao.deleteByPrimaryKey(id);
 	}
 
 	@Override
-	public PK insert(T record) {	
-		return (PK)baseDao.insert(record);
+	public void insert(T record) {	
+		baseDao.insert(record);
 	}
 
 	@Override
-	public PK insertSelective(T record) {		
-		return baseDao.insertSelective(record);
+	public void insertSelective(T record) {		
+		baseDao.insertSelective(record);
 	}
 
 	@Override
@@ -48,13 +48,13 @@ public class BaseService<T, PK extends Serializable> implements BaseDao<T, PK>{
 	}
 
 	@Override
-	public PK updateByPrimaryKeySelective(T record) {		
-		return baseDao.updateByPrimaryKeySelective(record);
+	public void updateByPrimaryKeySelective(T record) {		
+		baseDao.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
-	public PK updateByPrimaryKey(T record) {		
-		return baseDao.updateByPrimaryKey(record);
+	public void updateByPrimaryKey(T record) {		
+		baseDao.updateByPrimaryKey(record);
 	}
 
 }

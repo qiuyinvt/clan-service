@@ -11,8 +11,8 @@ import com.start.coc.service.utils.Find;
 
 @Transactional
 @Service
-public class ClanManService{
-	@Autowired
+public class ClanManService extends BaseService<ClanMan, Long>{
+	/*@Autowired
 	private ClanManMapper clanManDao;
 	
 	public List<ClanMan> getByFind(Find find) {		
@@ -45,5 +45,5 @@ public class ClanManService{
 
 	public Long updateByPrimaryKey(ClanMan record) {		
 		return clanManDao.updateByPrimaryKey(record);
-	}
+	}*/
 }

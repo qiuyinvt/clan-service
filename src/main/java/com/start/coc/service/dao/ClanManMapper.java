@@ -5,8 +5,8 @@ import java.util.Map;
 
 import com.start.coc.service.model.ClanMan;
 
-public interface ClanManMapper{
-	List<ClanMan> getByFind(Map find);
+public interface ClanManMapper extends BaseDao<ClanMan, Long>{
+	/*List<ClanMan> getByFind(Map find);
 
 	Long deleteByPrimaryKey(Long id);
 
@@ -18,5 +18,5 @@ public interface ClanManMapper{
 
 	Long updateByPrimaryKeySelective(ClanMan record);
 
-	Long updateByPrimaryKey(ClanMan record);
+	Long updateByPrimaryKey(ClanMan record);*/	
 }

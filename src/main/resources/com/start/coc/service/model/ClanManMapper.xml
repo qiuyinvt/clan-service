@@ -23,7 +23,7 @@
     delete from clan_man
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.start.coc.service.model.ClanMan">
+  <insert id="insert" parameterType="com.start.coc.service.model.ClanMan" useGeneratedKeys="true" keyProperty="id">   
     insert into clan_man (id, clan_id, name, role, 
       created, is_quit, remark
       )

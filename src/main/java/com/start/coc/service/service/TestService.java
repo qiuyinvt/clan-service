@@ -8,7 +8,7 @@ import com.start.coc.service.utils.Find;
 
 public abstract class TestService<T , PK extends Serializable> {		
 	
-	public List<T> getByFind(Find find,BaseDao<T , PK> baseDao) {			
+	/*public List<T> getByFind(Find find,BaseDao<T , PK> baseDao) {			
 		return baseDao.getByFind(find.getMap());
 	}
 
@@ -38,5 +38,5 @@ public abstract class TestService<T , PK extends Serializable> {
 
 	public PK updateByPrimaryKey(T record,BaseDao<T , PK> baseDao) {		
 		return baseDao.updateByPrimaryKey(record);
-	}
+	}*/
 }
